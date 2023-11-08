@@ -17,9 +17,9 @@ li {
 }
 
 #menuList {
-    border-bottom: 5px solid black ;
     padding: 0;
     margin: 0;
+    border-bottom: 5px solid black ;
     position: fixed;
     width: 1350px;
     height: 75px;
@@ -28,16 +28,17 @@ li {
 
 li button {
     margin: 0;
+    padding: 0;
+    border: none;
     height: 75px;
     width: 300px;
     font: 36px Arial;
     color: black;
-    border: none;
     background-color: silver;
-    transition-duration: 0.2s;
+    transition-duration: 0.1s;
 }
 
 li button:hover {
     cursor: pointer;
-    background-color: lightgrey;
+    text-decoration-line: underline;
 }
