@@ -45,7 +45,13 @@ button:hover {
 
 #puzzlePage {
     opacity: 1;
+} #settingsPage {
+        opacity: 0;
+} #leaderPage {
+    opacity: 0;
 }
+
+
 #crosswordDiv {
     position: fixed;
     top: 125px;
@@ -93,7 +99,7 @@ button:hover {
     border: 5px solid black;
 }
 
-#boardGenerateB {
+#puzzleGenerateB {
     position: fixed;
     top: 550px;
     left: 1085px;
