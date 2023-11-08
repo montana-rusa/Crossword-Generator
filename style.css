@@ -38,7 +38,97 @@ li button {
     transition-duration: 0.1s;
 }
 
-li button:hover {
+button:hover {
     cursor: pointer;
     text-decoration-line: underline;
+}
+
+#puzzlePage {
+    opacity: 1;
+}
+#crosswordDiv {
+    position: fixed;
+    top: 125px;
+    left: 75px;
+    width: 665px;
+    height: 565px;
+    border: 5px solid black;
+}
+
+#acrossCluesDiv {
+    position: fixed;
+    top: 125px;
+    left: 755px;
+    width: 310px;
+    height: 325px;
+    border: 5px solid black;
+}
+
+#downCluesDiv {
+    position: fixed;
+    top: 125px;
+    left: 1085px;
+    width: 310px;
+    height: 325px;
+    border: 5px solid black;
+}
+
+#lClueB {
+    position: fixed;
+    top: 470px;
+    left: 1085px;
+    width: 320px;
+    height: 70px;
+    font: 24px Arial;
+    border: 5px solid black;
+}
+
+#wClueB {
+    position: fixed;
+    top: 470px;
+    left: 755px;
+    width: 320px;
+    height: 70px;
+    font: 24px Arial;
+    border: 5px solid black;
+}
+
+#boardGenerateB {
+    position: fixed;
+    top: 550px;
+    left: 1085px;
+    width: 320px;
+    height: 70px;
+    font: 24px Arial;
+    border: 5px solid black;
+}
+
+#finishB {
+    position: fixed;
+    top: 550px;
+    left: 755px;
+    width: 320px;
+    height: 70px;
+    font: 24px Arial;
+    border: 5px solid black;
+}
+
+#wordEnter {
+    position: fixed;
+    top: 630px;
+    left: 755px;
+    width: 400px;
+    height: 58px;
+    font: 24px Arial;
+    border: 5px solid black;
+}
+
+#wordEnterB {
+    position: fixed;
+    top: 630px;
+    left: 1155px;
+    width: 250px;
+    height: 70px;
+    font: 24px Arial;
+    border: 5px solid black;
 }
