@@ -16,8 +16,8 @@ function menuPress(b1, n1, n2, o1, on1, on2) {
      document.getElementById(n2).disabled = false;
      document.getElementById(n2).style.backgroundColor="silver";
 
-     document.getElementById(o1).style.opacity="1";
-     document.getElementById(on1).style.opacity="0";
-     document.getElementById(on2).style.opacity="0";
+     document.getElementById(o1).style.display="block";
+     document.getElementById(on1).style.display="none";
+     document.getElementById(on2).style.display="none";
 }
 

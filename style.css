@@ -44,11 +44,11 @@ button:hover {
 }
 
 #puzzlePage {
-    opacity: 1;
+    display: block;
 } #settingsPage {
-        opacity: 0;
+    display: none;
 } #leaderPage {
-    opacity: 0;
+    opacity: none;
 }
 
 
@@ -137,4 +137,47 @@ button:hover {
     height: 70px;
     font: 24px Arial;
     border: 5px solid black;
+}
+
+#difficultyText {
+    position: fixed;
+    left: 635px;
+    font: 36px Arial;
+    top: 125px;
+}
+
+#settingsPage button {
+    position: fixed;
+    width: 300px;
+    height: 100px;
+    font: 36px Arial;
+}
+
+#easyB {
+    top: 225px;
+    left: 200px;
+} #normalB {
+    top: 225px;
+    left: 550px;
+} #hardB {
+    top: 225px;
+    left: 900px;
+}
+
+#colourText {
+    position: fixed;
+    left: 575px;
+    font: 36px Arial;
+    top: 350px;
+}
+
+#colour1B {
+    top: 450px;
+    left: 200px;
+} #colour2B {
+    top: 450px;
+    left: 550px;
+} #colour3B {
+    top: 450px;
+    left: 900px;
 }
