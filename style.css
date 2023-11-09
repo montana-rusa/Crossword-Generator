@@ -48,7 +48,7 @@ button:hover {
 } #settingsPage {
     display: none;
 } #leaderPage {
-    opacity: none;
+    display: none;
 }
 
 
@@ -180,4 +180,37 @@ button:hover {
 } #colour3B {
     top: 450px;
     left: 900px;
+}
+
+#easyBox {
+    position: fixed;
+    top: 125px;
+    left: 75px;
+    width: 400px;
+    height: 565px;
+    border: 5px solid black;
+    font: 36px Arial;
+    text-align: center;
+}
+
+#normalBox {
+    position: fixed;
+    top: 125px;
+    left: 530px;
+    width: 400px;
+    height: 565px;
+    border: 5px solid black;
+    font: 36px Arial;
+    text-align: center;
+}
+
+#hardBox {
+    position: fixed;
+    top: 125px;
+    left: 985px;
+    width: 400px;
+    height: 565px;
+    border: 5px solid black;
+    font: 36px Arial;
+    text-align: center;
 }
