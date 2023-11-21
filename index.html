@@ -17,7 +17,9 @@
   
         <div id="puzzlePage">
             <div id="crosswordDiv"></div>
-            <div id="acrossCluesDiv"></div>
+            <div id="acrossCluesDiv">
+                <h1 id="testText">test</h1>
+            </div>
             <div id="downCluesDiv"></div>
             <button id="lClueB">Letter clue</button>
             <button id="wClueB">Word clue</button>
@@ -25,24 +27,28 @@
             <button id="finishB">Finish crossword</button>
             <input type="text" placeholder="enter word:" id="wordEnter"/>
             <button id="wordEnterB">Enter word</button>
+
         </div>
+        <!--This code creates and labels all of the elements on the puzzle page-->
 
         <div id="settingsPage">
             <h2 id="difficultyText">Difficulty</h2>
-            <button id="easyB">Easy</button>
-            <button id="normalB">Normal</button>
-            <button id="hardB">Hard</button>
+            <button id="easyB" onclick="changeDifficulty('easy')">Easy</button>
+            <button id="normalB" onclick="changeDifficulty('normal')">Normal</button>
+            <button id="hardB" onclick="changeDifficulty('hard')">Hard</button>
             <h2 id="colourText">Colour scheme</h2>
             <button id="colour1B">Monochrome</button>
             <button id="colour2B">Seaside</button>
             <button id="colour3B">Galaxy</button>
         </div>
+        <!--This code creates and labels all of the elements on the settings page-->
 
         <div id="leaderPage">
             <div id="easyBox">Easy</div>
             <div id="normalBox">Normal</div>
             <div id="hardBox">Hard</div>
         </div>
+        <!--This code creates and labels all of the elements on the leaderboard page-->
 
     </div>
     <script src="script.js"></script>
