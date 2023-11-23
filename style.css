@@ -214,3 +214,7 @@ button:hover {
     font: 36px Arial;
     text-align: center;
 }
+
+h1 {
+    font: bold 20px Courier;
+}

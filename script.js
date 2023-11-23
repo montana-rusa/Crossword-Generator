@@ -49,13 +49,38 @@ function generateCrossword() {
     let tempNumber2 = 0;
     //declare local variables
 
+    crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
+    startCoords = [];
+    endCoords = [];
+    selectedWords = [];
+    // reset the global variables 
+
     word = wordList[Math.floor(Math.random()*wordList.length)];
     startCoords[0] = [0,0];
-    endCoords[0] = [length.word-1,0];
+    endCoords[0] = [word.length-1,0];
     for (let i=0; i < word.length; i++) {
         crosswordGrid[0][i] = word[i];
     } selectedWords[0] = word;
- // generates first word
+    // generates first word
 
- 
+    tempNumber = Math.floor(Math.random()*3);
+    tempNumber = endCoords[0][0] - tempNumber;
+    word = wordList[Math.floor(Math.random()*wordList.length)];
+    while ((!(word[0] == selectedWords[0][tempNumber])) || (selectedWords.includes(word))) {
+        word = wordList[Math.floor(Math.random()*wordList.length)];
+    } startCoords[1] = [tempNumber,0];
+    endCoords[0] = [tempNumber, 0+word.length];
+    for (let i=0; i < word.length; i++) {
+        crosswordGrid[i][tempNumber] = word[i];
+    } selectedWords[1] = word;
+    //generates second word
+
+    document.getElementById("testText1").innerHTML=crosswordGrid[0];
+    document.getElementById("testText2").innerHTML=crosswordGrid[1];
+    document.getElementById("testText3").innerHTML=crosswordGrid[2];
+    document.getElementById("testText4").innerHTML=crosswordGrid[3];
+    document.getElementById("testText5").innerHTML=crosswordGrid[4];
+    document.getElementById("testText6").innerHTML=crosswordGrid[5];
+    document.getElementById("testText7").innerHTML=crosswordGrid[6];
+    document.getElementById("testText8").innerHTML=crosswordGrid[7];
 }
