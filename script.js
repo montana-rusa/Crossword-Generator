@@ -45,35 +45,39 @@ function changeDifficulty(newDifficulty) {
 
 function generateCrossword() {
     let word = "";
-    let tempNumber = 0;
-    let tempNumber2 = 0;
+    let tempX = 0;
+    let tempY = 0;
+    let wordDirection = "a";
+    let wordCount = 0;
     //declare local variables
 
     crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
     startCoords = [];
     endCoords = [];
-    selectedWords = [];
+    selectedWords = ["........"];
     // reset the global variables 
-
-    word = wordList[Math.floor(Math.random()*wordList.length)];
-    startCoords[0] = [0,0];
-    endCoords[0] = [word.length-1,0];
-    for (let i=0; i < word.length; i++) {
-        crosswordGrid[0][i] = word[i];
-    } selectedWords[0] = word;
-    // generates first word
-
-    tempNumber = Math.floor(Math.random()*3);
-    tempNumber = endCoords[0][0] - tempNumber;
-    word = wordList[Math.floor(Math.random()*wordList.length)];
-    while ((!(word[0] == selectedWords[0][tempNumber])) || (selectedWords.includes(word))) {
+    
+    while (wordCount < 4) {
         word = wordList[Math.floor(Math.random()*wordList.length)];
-    } startCoords[1] = [tempNumber,0];
-    endCoords[0] = [tempNumber, 0+word.length];
-    for (let i=0; i < word.length; i++) {
-        crosswordGrid[i][tempNumber] = word[i];
-    } selectedWords[1] = word;
-    //generates second word
+
+        if (!(wordCount == 0)) {
+            while ((!(word[0] == selectedWords[wordCount-1][selectedWords[wordCount-1].length-1])) || (selectedWords.includes(word))) {
+                word = wordList[Math.floor(Math.random()*wordList.length)]; }}
+        
+        startCoords[wordCount] = [tempX, tempY];
+        if (wordDirection == "a") {
+            for (let i=0; i < word.length; i++) {crosswordGrid[tempY][tempX+i] = word[i];}
+            tempX = tempX+word.length-1;
+            wordDirection = "d";
+        } else { 
+            for (let i=0; i < word.length; i++) {crosswordGrid[tempY+i][tempX] = word[i];}
+            tempY = tempY+word.length-1;
+            wordDirection = "a";
+        }
+        endCoords[wordCount] = [tempX,tempY];
+        selectedWords[wordCount] = word;
+        wordCount=wordCount+1;
+    }
 
     document.getElementById("testText1").innerHTML=crosswordGrid[0];
     document.getElementById("testText2").innerHTML=crosswordGrid[1];
@@ -83,4 +87,12 @@ function generateCrossword() {
     document.getElementById("testText6").innerHTML=crosswordGrid[5];
     document.getElementById("testText7").innerHTML=crosswordGrid[6];
     document.getElementById("testText8").innerHTML=crosswordGrid[7];
+    document.getElementById("testText9").innerHTML=crosswordGrid[8];
+    document.getElementById("testText10").innerHTML=crosswordGrid[9];
+    document.getElementById("testText11").innerHTML=crosswordGrid[10];
+    document.getElementById("testText12").innerHTML=crosswordGrid[11];
+    document.getElementById("testText13").innerHTML=crosswordGrid[12];
+    document.getElementById("testText14").innerHTML=crosswordGrid[13];
+    document.getElementById("testText15").innerHTML=crosswordGrid[14];
+    document.getElementById("testText16").innerHTML=crosswordGrid[15];
 }
