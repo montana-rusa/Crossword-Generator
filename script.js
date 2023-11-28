@@ -59,11 +59,9 @@ function generateCrossword() {
     
     while (wordCount < 4) {
         word = wordList[Math.floor(Math.random()*wordList.length)];
-
         if (!(wordCount == 0)) {
             while ((!(word[0] == selectedWords[wordCount-1][selectedWords[wordCount-1].length-1])) || (selectedWords.includes(word))) {
                 word = wordList[Math.floor(Math.random()*wordList.length)]; }}
-        
         startCoords[wordCount] = [tempX, tempY];
         if (wordDirection == "a") {
             for (let i=0; i < word.length; i++) {crosswordGrid[tempY][tempX+i] = word[i];}
@@ -72,12 +70,12 @@ function generateCrossword() {
         } else { 
             for (let i=0; i < word.length; i++) {crosswordGrid[tempY+i][tempX] = word[i];}
             tempY = tempY+word.length-1;
-            wordDirection = "a";
-        }
+            wordDirection = "a"; }
         endCoords[wordCount] = [tempX,tempY];
         selectedWords[wordCount] = word;
         wordCount=wordCount+1;
     }
+    //generates first 4 words
 
     document.getElementById("testText1").innerHTML=crosswordGrid[0];
     document.getElementById("testText2").innerHTML=crosswordGrid[1];
