@@ -1,6 +1,5 @@
 var difficulty = "normal";
 var wordList = ['audience', 'amateur', 'accused', 'anomaly', 'absent', 'asylum', 'apathy', 'adept', 'anthem', 'beverage', 'blanket', 'behalf', 'blaze', 'coronary', 'candid', 'conduct', 'consent', 'census', 'drone', 'distress', 'dignity', 'dessert', 'elevator', 'eruption', 'epilogue', 'erosion', 'eclipse', 'eminent', 'erotic', 'equine', 'fugitive', 'fantasy', 'festive', 'fiber', 'genocide', 'glory', 'gallows', 'grudge', 'hysteria', 'hologram', 'hormone', 'hostage', 'inferior', 'indulge', 'incest', 'impair', 'idiom', 'jugular', 'justice', 'jungle', 'kilobyte', 'kneecap', 'kidney', 'karma', 'leisure', 'lunatic', 'launch', 'lesion', 'montage', 'modest', 'manor', 'magma', 'negative', 'neglect', 'nebula', 'ninja', 'outcast', 'ornate', 'organ', 'optimum', 'pregnant', 'preacher', 'plasma', 'quartet', 'quirk', 'quaint', 'release', 'reunion', 'riddle', 'retail', 'scarce', 'surgery', 'secular', 'surplus', 'shallow', 'scrap', 'throttle', 'tragic', 'triumph', 'thermal', 'thunder', 'ultimate', 'umpire', 'union', 'venture', 'valiant', 'vocal', 'welfare', 'whisper', 'wretch', 'yarrow', 'yacht', 'yeast', 'zealous', 'zodiac'];
-
 var startCoords = [];
 var endCoords = [];
 var selectedWords = [];
@@ -39,8 +38,7 @@ function changeDifficulty(newDifficulty) {
     } if (difficulty == "easy") {
         wordList = ['annoying', 'ability', 'author', 'artist', 'airport', 'algebra', 'arcade', 'angel', 'bright', 'blizzard', 'biology', 'birth', 'control', 'castle', 'crack', 'common', 'death', 'defeat', 'daughter', 'drunk', 'equality', 'eternal', 'earth', 'empire', 'effect', 'emotion', 'eyeball', 'ending', 'faith', 'failure', 'factory', 'family', 'general', 'gentle', 'global', 'garden', 'husband', 'hidden', 'hunger', 'heart', 'interest', 'infinite', 'island', 'insult', 'jigsaw', 'jacket', 'judge', 'juice', 'kitchen', 'kingdom', 'knight', 'knife', 'library', 'local', 'lethal', 'lawyer', 'marriage', 'morning', 'mirror', 'money', 'nickname', 'natural', 'nearby', 'nurse', 'original', 'option', 'office', 'owner', 'practice', 'paint', 'pasta', 'plain', 'quality', 'quick', 'quiet', 'quest', 'research', 'recover', 'ready', 'rough', 'solution', 'success', 'speech', 'storm', 'together', 'teacher', 'travel', 'total', 'universe', 'unique', 'upset', 'uncle', 'violence', 'victory', 'victim', 'value', 'weakness', 'winner', 'winter', 'water', 'yogurt', 'youth', 'young', 'zigzag', 'zombie'];
     }
-    
-}
+} 
 //function changeDifficulty changes value of variables 'difficulty' and 'wordList when a new difficulty is clicked in settings
 
 function generateCrossword() {
@@ -104,7 +102,7 @@ function generateCrossword() {
     tempNumber = selectedWords[1].length-3;
     tempNumber = Math.floor(Math.random()*tempNumber)+1;
     word = wordList[Math.floor(Math.random()*wordList.length)];
-    while ((!(word[0] == selectedWords[2][tempNumber])) || (selectedWords.includes(word))) {
+    while ((!(word[0] == selectedWords[1][tempNumber])) || (selectedWords.includes(word))) {
         word = wordList[Math.floor(Math.random()*wordList.length)]; }
     startCoords[wordCount] = [endCoords[0][0],tempNumber];
     for (let i=0; i < word.length; i++) {crosswordGrid[tempNumber][startCoords[wordCount][0]+i]= word[i];}
