@@ -49,6 +49,7 @@ function generateCrossword() {
     let tempY = 0;
     let wordDirection = "a";
     let wordCount = 0;
+    let tempNumber = 0;
     //declare local variables
 
     crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
@@ -74,8 +75,23 @@ function generateCrossword() {
         endCoords[wordCount] = [tempX,tempY];
         selectedWords[wordCount] = word;
         wordCount=wordCount+1;
-    }
-    //generates first 4 words
+    } //generates first 4 words
+
+    tempNumber = selectedWords[0].length-3
+    tempNumber = Math.floor(Math.random()*tempNumber);
+    word = wordList[Math.floor(Math.random()*wordList.length)];
+    while ((!(word[0] == selectedWords[0][tempNumber])) || (selectedWords.includes(word))) {
+        word = wordList[Math.floor(Math.random()*wordList.length)]; }
+    startCoords[wordCount] = [tempNumber, 0]
+    for (let i=0; i < word.length; i++) {crosswordGrid[i][tempNumber]= word[i];}
+    selectedWords[wordCount] = word;
+    endCoords[wordCount] = [tempNumber,word.length-1];
+    wordCount = wordCount + 1;
+    //generates 5th word
+
+
+
+
 
     document.getElementById("testText1").innerHTML=crosswordGrid[0];
     document.getElementById("testText2").innerHTML=crosswordGrid[1];
