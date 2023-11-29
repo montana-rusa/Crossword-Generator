@@ -1,10 +1,10 @@
 var difficulty = "normal";
 var wordList = ['audience', 'amateur', 'accused', 'anomaly', 'absent', 'asylum', 'apathy', 'adept', 'anthem', 'beverage', 'blanket', 'behalf', 'blaze', 'coronary', 'candid', 'conduct', 'consent', 'census', 'drone', 'distress', 'dignity', 'dessert', 'elevator', 'eruption', 'epilogue', 'erosion', 'eclipse', 'eminent', 'erotic', 'equine', 'fugitive', 'fantasy', 'festive', 'fiber', 'genocide', 'glory', 'gallows', 'grudge', 'hysteria', 'hologram', 'hormone', 'hostage', 'inferior', 'indulge', 'incest', 'impair', 'idiom', 'jugular', 'justice', 'jungle', 'kilobyte', 'kneecap', 'kidney', 'karma', 'leisure', 'lunatic', 'launch', 'lesion', 'montage', 'modest', 'manor', 'magma', 'negative', 'neglect', 'nebula', 'ninja', 'outcast', 'ornate', 'organ', 'optimum', 'pregnant', 'preacher', 'plasma', 'quartet', 'quirk', 'quaint', 'release', 'reunion', 'riddle', 'retail', 'scarce', 'surgery', 'secular', 'surplus', 'shallow', 'scrap', 'throttle', 'tragic', 'triumph', 'thermal', 'thunder', 'ultimate', 'umpire', 'union', 'venture', 'valiant', 'vocal', 'welfare', 'whisper', 'wretch', 'yarrow', 'yacht', 'yeast', 'zealous', 'zodiac'];
 
-var startCoords = [];
-var endCoords = [];
+var startCoords = [[],[],[],[],[],[],[]];
+var endCoords = [[],[],[],[],[],[],[]];
 var selectedWords = [];
-var crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
+var crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
 //global variables being declared
 
 function puzzlePress() {
@@ -52,7 +52,7 @@ function generateCrossword() {
     let tempNumber = 0;
     //declare local variables
 
-    crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
+    crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
     startCoords = [];
     endCoords = [];
     selectedWords = ["........"];
@@ -77,7 +77,7 @@ function generateCrossword() {
         wordCount=wordCount+1;
     } //generates first 4 words
 
-    tempNumber = selectedWords[0].length-3
+    tempNumber = selectedWords[0].length-2;
     tempNumber = Math.floor(Math.random()*tempNumber);
     word = wordList[Math.floor(Math.random()*wordList.length)];
     while ((!(word[0] == selectedWords[0][tempNumber])) || (selectedWords.includes(word))) {
@@ -86,13 +86,22 @@ function generateCrossword() {
     for (let i=0; i < word.length; i++) {crosswordGrid[i][tempNumber]= word[i];}
     selectedWords[wordCount] = word;
     endCoords[wordCount] = [tempNumber,word.length-1];
-    wordCount = wordCount + 1;
+    wordCount=wordCount+1;
     //generates 5th word
 
+    tempNumber = selectedWords[2].length-3;
+    tempNumber = Math.floor(Math.random()*tempNumber)+1;
+    word = wordList[Math.floor(Math.random()*wordList.length)];
+    while ((!(word[0] == selectedWords[2][tempNumber])) || (selectedWords.includes(word))) {
+        word = wordList[Math.floor(Math.random()*wordList.length)]; }
+    startCoords[wordCount] = [startCoords[2][0]+tempNumber,startCoords[2][1]];
+    for (let i=0; i < word.length; i++) {crosswordGrid[startCoords[2][1]+i][startCoords[wordCount][0]]= word[i];}
+    selectedWords[wordCount] = word;
+    endCoords[wordCount] = [startCoords[wordCount][0],startCoords[wordCount][1]+word.length-1];
+    wordCount=wordCount+1;
+    //generates 6th word
 
-
-
-
+    //document.getElementById("testText1").innerHTML=startCoords[wordCount];
     document.getElementById("testText1").innerHTML=crosswordGrid[0];
     document.getElementById("testText2").innerHTML=crosswordGrid[1];
     document.getElementById("testText3").innerHTML=crosswordGrid[2];
@@ -108,5 +117,5 @@ function generateCrossword() {
     document.getElementById("testText13").innerHTML=crosswordGrid[12];
     document.getElementById("testText14").innerHTML=crosswordGrid[13];
     document.getElementById("testText15").innerHTML=crosswordGrid[14];
-    document.getElementById("testText16").innerHTML=crosswordGrid[15];
+    
 }
