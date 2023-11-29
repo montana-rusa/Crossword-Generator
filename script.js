@@ -101,7 +101,18 @@ function generateCrossword() {
     wordCount=wordCount+1;
     //generates 6th word
 
-    //document.getElementById("testText1").innerHTML=startCoords[wordCount];
+    tempNumber = selectedWords[1].length-3;
+    tempNumber = Math.floor(Math.random()*tempNumber)+1;
+    word = wordList[Math.floor(Math.random()*wordList.length)];
+    while ((!(word[0] == selectedWords[2][tempNumber])) || (selectedWords.includes(word))) {
+        word = wordList[Math.floor(Math.random()*wordList.length)]; }
+    startCoords[wordCount] = [endCoords[0][0],tempNumber];
+    for (let i=0; i < word.length; i++) {crosswordGrid[tempNumber][startCoords[wordCount][0]+i]= word[i];}
+    endCoords[wordCount] = [startCoords[wordCount][0]+word.length-1,tempNumber];
+    selectedWords[wordCount] = word;
+     //generates 7th word
+
+    
     document.getElementById("testText1").innerHTML=crosswordGrid[0];
     document.getElementById("testText2").innerHTML=crosswordGrid[1];
     document.getElementById("testText3").innerHTML=crosswordGrid[2];
