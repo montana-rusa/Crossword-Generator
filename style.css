@@ -51,7 +51,6 @@ button:hover {
     display: none;
 }
 
-
 #crosswordDiv {
     position: fixed;
     top: 125px;
@@ -217,4 +216,16 @@ button:hover {
 
 h1 {
     font: bold 20px Courier;
+}
+
+#acrossTitle, #downTitle {
+    text-align: center;
+    text-decoration-line: underline;
+    font: bold 20px Arial;
+}
+
+#downCluesDiv h3, #acrossCluesDiv h3 {
+    font: 20px Arial;
+    position: relative;
+    left: 5px;
 }

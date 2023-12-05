@@ -4,6 +4,7 @@ var startCoords = [];
 var endCoords = [];
 var selectedWords = [];
 var crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
+var clues = [];
 //global variables being declared
 
 function puzzlePress() {
@@ -110,7 +111,6 @@ function generateCrossword() {
     selectedWords[wordCount] = word;
      //generates 7th word
 
-    
     document.getElementById("testText1").innerHTML=crosswordGrid[0];
     document.getElementById("testText2").innerHTML=crosswordGrid[1];
     document.getElementById("testText3").innerHTML=crosswordGrid[2];
@@ -125,6 +125,25 @@ function generateCrossword() {
     document.getElementById("testText12").innerHTML=crosswordGrid[11];
     document.getElementById("testText13").innerHTML=crosswordGrid[12];
     document.getElementById("testText14").innerHTML=crosswordGrid[13];
-    document.getElementById("testText15").innerHTML=crosswordGrid[14];
-    
+    document.getElementById("testText15").innerHTML=selectedWords;
+    //testing script
+
+    generateClues();
+}
+
+function generateClues() {
+    let word = "";
+    let tempNumber = 0;
+    let wordClue = "";
+    //declare local variables
+
+    clues = [];
+    //resets global variables
+
+    for (let i=0; i < 8; i++) {
+        word = selectedWords[i];
+        
+
+
+    }
 }
