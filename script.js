@@ -147,6 +147,7 @@ function generateClues() {
         fetch(url+word)
         .then (res => res.json())
         .then (result => data(result, i));
+        //iteratively runs function which generates the clues
     }
 }
 
@@ -155,15 +156,19 @@ function data(result, i) {
     let randomDef = 0;
     let tempNumber = i + 1;
     tempNumber = tempNumber+". ";
+    //declares global variables
+
     randomMeaning = result[0].meanings;
     randomMeaning = Math.floor(Math.random()*randomMeaning.length);
 
     randomDef = result[0].meanings[randomMeaning].definitions;
     randomDef= Math.floor(Math.random()*randomDef.length);
+    //randomizes the process
 
     let meaning = result[0].meanings[randomMeaning].definitions[randomDef].definition;
     clues[i] = meaning;
     document.getElementById("clue"+i).innerHTML=tempNumber+meaning;
+    //writes the clue to clues and displays it
 }
 
 
