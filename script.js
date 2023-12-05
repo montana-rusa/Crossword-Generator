@@ -5,6 +5,8 @@ var endCoords = [];
 var selectedWords = [];
 var crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
 var clues = [];
+const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
+//var word = "hello";
 //global variables being declared
 
 function puzzlePress() {
@@ -142,8 +144,28 @@ function generateClues() {
 
     for (let i=0; i < 8; i++) {
         word = selectedWords[i];
-        
-
-
+        fetch(url+word)
+        .then (res => res.json())
+        .then (result => data(result, i));
     }
 }
+
+function data(result, i) {
+    let randomMeaning = 0;
+    let randomDef = 0;
+    let tempNumber = i + 1;
+    tempNumber = tempNumber+". ";
+    randomMeaning = result[0].meanings;
+    randomMeaning = Math.floor(Math.random()*randomMeaning.length);
+
+    randomDef = result[0].meanings[randomMeaning].definitions;
+    randomDef= Math.floor(Math.random()*randomDef.length);
+
+    let meaning = result[0].meanings[randomMeaning].definitions[randomDef].definition;
+    clues[i] = meaning;
+    document.getElementById("clue"+i).innerHTML=tempNumber+meaning;
+}
+
+
+
+
