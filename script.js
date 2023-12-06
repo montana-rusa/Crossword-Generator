@@ -167,7 +167,8 @@ function data(result, i) {
 
     let meaning = result[0].meanings[randomMeaning].definitions[randomDef].definition;
     clues[i] = meaning;
-    document.getElementById("clue"+i).innerHTML=tempNumber+meaning;
+    if (i < 7) {document.getElementById("clue"+i).innerHTML=tempNumber+meaning;}
+    
     //writes the clue to clues and displays it
 }
 
