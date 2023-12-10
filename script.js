@@ -58,6 +58,9 @@ function generateCrossword() {
     endCoords = [];
     selectedWords = ["........"];
     // reset the global variables 
+
+    document.getElementById("puzzleGenerateB").disabled = true;
+    //disables the button
     
     while (wordCount < 4) {
         word = wordList[Math.floor(Math.random()*wordList.length)];
@@ -149,26 +152,30 @@ function generateClues() {
         .then (result => data(result, i));
         //iteratively runs function which generates the clues
     }
+    document.getElementById("puzzleGenerateB").disabled = false;
 }
 
 function data(result, i) {
     let randomMeaning = 0;
     let randomDef = 0;
-    let tempNumber = i + 1;
-    tempNumber = tempNumber+". ";
+    let tempNumber = i + 1; tempNumber = tempNumber+". ";
+    let meaning = "To let go, as a legal claim; to discharge or relinquish a right to, as lands or tenements, by conveying to another who has some right or estate in possession, as when the person in remainder releases his right to the tenant in possession; to quit.";
     //declares global variables
 
-    randomMeaning = result[0].meanings;
-    randomMeaning = Math.floor(Math.random()*randomMeaning.length);
+    while (meaning.length > 195) {
+    //imposes a character limit on the clue
+     randomMeaning = result[0].meanings;
+     randomMeaning = Math.floor(Math.random()*randomMeaning.length);
 
-    randomDef = result[0].meanings[randomMeaning].definitions;
-    randomDef= Math.floor(Math.random()*randomDef.length);
-    //randomizes the process
+     randomDef = result[0].meanings[randomMeaning].definitions;
+     randomDef = Math.floor(Math.random()*randomDef.length);
+     //randomizes the process
 
-    let meaning = result[0].meanings[randomMeaning].definitions[randomDef].definition;
+     meaning = result[0].meanings[randomMeaning].definitions[randomDef].definition;
+    }
+    
     clues[i] = meaning;
     if (i < 7) {document.getElementById("clue"+i).innerHTML=tempNumber+meaning;}
-    
     //writes the clue to clues and displays it
 }
 
