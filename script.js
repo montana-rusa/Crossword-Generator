@@ -152,7 +152,9 @@ function generateClues() {
         .then (result => data(result, i));
         //iteratively runs function which generates the clues
     }
+    
     document.getElementById("puzzleGenerateB").disabled = false;
+    generateVisuals();
 }
 
 function data(result, i) {
@@ -179,6 +181,11 @@ function data(result, i) {
     //writes the clue to clues and displays it
 }
 
+function generateVisuals() {
+    let directionHolder = "hvhvvvh";
+    let tempValue = "";
+    let gridLocation = ["0px","0px"];
+}
 
 
 
