@@ -130,8 +130,8 @@ function generateCrossword() {
     document.getElementById("testText12").innerHTML=crosswordGrid[11];
     document.getElementById("testText13").innerHTML=crosswordGrid[12];
     document.getElementById("testText14").innerHTML=crosswordGrid[13];
-    document.getElementById("testText15").innerHTML=selectedWords;
-    //testing script
+    //document.getElementById("testText15").innerHTML=selectedWords;
+   //testing script
 
     generateClues();
 }
@@ -145,14 +145,14 @@ function generateClues() {
     clues = [];
     //resets global variables
 
-    for (let i=0; i < 8; i++) {
+    for (let i=0; i < 7; i++) {
         word = selectedWords[i];
         fetch(url+word)
         .then (res => res.json())
         .then (result => data(result, i));
         //iteratively runs function which generates the clues
     }
-    
+
     document.getElementById("puzzleGenerateB").disabled = false;
     generateVisuals();
 }
@@ -184,7 +184,22 @@ function data(result, i) {
 function generateVisuals() {
     let directionHolder = "hvhvvvh";
     let tempValue = "";
+    let tempValue2 = "";
     let gridLocation = ["0px","0px"];
+    //declare local variables
+
+    let i = 0;
+    tempValue = startCoords[i][0]*35;
+    tempValue = 145 + tempValue;
+    tempValue = tempValue + "px";
+
+    tempValue2 = startCoords[i][1]*35;
+    tempValue2 = 145 + tempValue2;
+    tempValue2 = tempValue2 + "px";
+
+    gridLocation = [tempValue, tempValue2];
+    document.getElementById("testText15").innerHTML=gridLocation;
+
 }
 
 
