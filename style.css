@@ -232,6 +232,7 @@ h1 {
 }
 
 #gaps img {
+    display: none;
     position: fixed;
     width: 175px;
     height: 35px;

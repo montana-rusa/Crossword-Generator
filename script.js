@@ -116,7 +116,7 @@ function generateCrossword() {
     selectedWords[wordCount] = word;
      //generates 7th word
 
-    document.getElementById("testText1").innerHTML=crosswordGrid[0];
+    /*document.getElementById("testText1").innerHTML=crosswordGrid[0];
     document.getElementById("testText2").innerHTML=crosswordGrid[1];
     document.getElementById("testText3").innerHTML=crosswordGrid[2];
     document.getElementById("testText4").innerHTML=crosswordGrid[3];
@@ -129,8 +129,8 @@ function generateCrossword() {
     document.getElementById("testText11").innerHTML=crosswordGrid[10];
     document.getElementById("testText12").innerHTML=crosswordGrid[11];
     document.getElementById("testText13").innerHTML=crosswordGrid[12];
-    document.getElementById("testText14").innerHTML=crosswordGrid[13];
-    //document.getElementById("testText15").innerHTML=selectedWords;
+    //document.getElementById("testText").innerHTML=crosswordGrid[13];
+    document.getElementById("testText14").innerHTML=selectedWords; */
    //testing script
 
     generateClues();
@@ -183,23 +183,49 @@ function data(result, i) {
 
 function generateVisuals() {
     let directionHolder = "hvhvvvh";
-    let tempValue = "";
-    let tempValue2 = "";
+    let xValue = "";
+    let yValue = "";
+    let imageName = "";
     let gridLocation = ["0px","0px"];
     //declare local variables
 
-    let i = 0;
-    tempValue = startCoords[i][0]*35;
-    tempValue = 145 + tempValue;
-    tempValue = tempValue + "px";
+    
+    for (let i=0; i < 7; i++) {
+        xValue = startCoords[i][0]*35;
+        xValue = 145 + xValue;
+        xValue = xValue + "px";
+        yValue = startCoords[i][1]*35;
+        yValue = 145 + yValue;
+        yValue = yValue + "px";
+        gridLocation = [xValue, yValue];
+        //translates the startCoords to the in-ratio gridLocation
 
-    tempValue2 = startCoords[i][1]*35;
-    tempValue2 = 145 + tempValue2;
-    tempValue2 = tempValue2 + "px";
+        imageName = selectedWords[i];
+        imageName = imageName.length;
+        if (directionHolder[i] == "h") {
+            document.getElementById("gap"+i).style.height="35px";
+            xValue = 35*imageName;
+            xValue = xValue + "px";
+            document.getElementById("gap"+i).style.width=xValue;
+        } else {
+            document.getElementById("gap"+i).style.width="35px";
+            yValue = 35*imageName;
+            yValue = yValue + "px";
+            document.getElementById("gap"+i).style.height=yValue;
+        } // sets heigh and width of gap element to length-corresponding values
 
-    gridLocation = [tempValue, tempValue2];
-    document.getElementById("testText15").innerHTML=gridLocation;
+        imageName = directionHolder[i] + imageName;
+        imageName = "images/" + imageName + ".png";
+        document.getElementById("gap"+i).src=imageName;
+        //changes the gap element to the right image
 
+        document.getElementById("gap"+i).style.top=gridLocation[1];
+        document.getElementById("gap"+i).style.left=gridLocation[0];
+        //moves the gap element to the right place
+        
+        document.getElementById("gap"+i).style.display="block";
+        //document.getElementById("testText15").innerHTML=imageName;
+    }
 }
 
 
