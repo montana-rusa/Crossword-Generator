@@ -129,8 +129,8 @@ function generateCrossword() {
     document.getElementById("testText11").innerHTML=crosswordGrid[10];
     document.getElementById("testText12").innerHTML=crosswordGrid[11];
     document.getElementById("testText13").innerHTML=crosswordGrid[12];
-    //document.getElementById("testText").innerHTML=crosswordGrid[13];
-    document.getElementById("testText14").innerHTML=selectedWords; */
+    //document.getElementById("testText").innerHTML=crosswordGrid[13]; */
+    //document.getElementById("testText15").innerHTML=selectedWords;
    //testing script
 
     generateClues();
