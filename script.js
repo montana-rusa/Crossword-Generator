@@ -189,7 +189,6 @@ function generateVisuals() {
     let gridLocation = ["0px","0px"];
     //declare local variables
 
-    
     for (let i=0; i < 7; i++) {
         xValue = startCoords[i][0]*35;
         xValue = 145 + xValue;
@@ -212,7 +211,7 @@ function generateVisuals() {
             yValue = 35*imageName;
             yValue = yValue + "px";
             document.getElementById("gap"+i).style.height=yValue;
-        } // sets heigh and width of gap element to length-corresponding values
+        } // sets height and width of gap element to length-corresponding values
 
         imageName = directionHolder[i] + imageName;
         imageName = "images/" + imageName + ".png";
