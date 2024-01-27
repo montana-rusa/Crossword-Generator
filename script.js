@@ -81,8 +81,8 @@ function generateCrossword() {
         wordCount=wordCount+1;
     } //generates first 4 words
 
-    tempNumber = selectedWords[0].length-2;
-    tempNumber = Math.floor(Math.random()*tempNumber);
+    tempNumber = selectedWords[0].length-3;
+    tempNumber = Math.floor(Math.random()*tempNumber)+1;
     word = wordList[Math.floor(Math.random()*wordList.length)];
     while ((!(word[0] == selectedWords[0][tempNumber])) || (selectedWords.includes(word))) {
         word = wordList[Math.floor(Math.random()*wordList.length)]; }
@@ -184,6 +184,7 @@ function data(result, i) {
 function generateVisuals() {
     let directionHolder = "hvhvvvh";
     let xValue = "";
+    let xValueText = "";
     let yValue = "";
     let imageName = "";
     let gridLocation = ["0px","0px"];
@@ -192,6 +193,8 @@ function generateVisuals() {
     for (let i=0; i < 7; i++) {
         xValue = startCoords[i][0]*35;
         xValue = 145 + xValue;
+        xValueText = xValue + 5;
+        xValueText = xValueText + "px";
         xValue = xValue + "px";
         yValue = startCoords[i][1]*35;
         yValue = 145 + yValue;
@@ -224,6 +227,13 @@ function generateVisuals() {
         
         document.getElementById("gap"+i).style.display="block";
         //document.getElementById("testText15").innerHTML=imageName;
+
+        document.getElementById("gapText"+i).style.top=gridLocation[1];
+        document.getElementById("gapText"+i).style.left=xValueText;
+        document.getElementById("gapText"+i).style.display="block";
+        //visually numbers each gap
+
+
     }
 }
 

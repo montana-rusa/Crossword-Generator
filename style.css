@@ -237,3 +237,10 @@ h1 {
     width: 175px;
     height: 35px;
 }
+
+#gapTexts p {
+    display: none;
+    position: fixed;
+    width: 175px;
+    height: 35px;
+}
