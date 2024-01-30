@@ -256,3 +256,13 @@ h1 {
     width: 175px;
     height: 35px;
 }
+
+#gapFills p {
+    position: fixed;
+    font: 30px Courier;
+}
+
+.vertical-writing {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}

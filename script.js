@@ -5,8 +5,9 @@ var endCoords = [];
 var selectedWords = [];
 var crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".",],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".",".",".",".",".",".",".",".","."]];
 var clues = [];
+var enteredWords = [".",".",".",".",".",".","."];
+var gridLocations = []
 const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
-//var word = "hello";
 //global variables being declared
 
 function puzzlePress() {
@@ -58,6 +59,11 @@ function generateCrossword() {
     endCoords = [];
     selectedWords = ["........"];
     // reset the global variables 
+
+    for (let i=0; i < 7; i++) {
+        document.getElementById("gapFill"+i).innerHTML="";
+    }
+    //resets all of the gapFill elements
 
     document.getElementById("puzzleGenerateB").disabled = true;
     //disables the button
@@ -115,23 +121,6 @@ function generateCrossword() {
     endCoords[wordCount] = [startCoords[wordCount][0]+word.length-1,tempNumber];
     selectedWords[wordCount] = word;
      //generates 7th word
-
-    /*document.getElementById("testText1").innerHTML=crosswordGrid[0];
-    document.getElementById("testText2").innerHTML=crosswordGrid[1];
-    document.getElementById("testText3").innerHTML=crosswordGrid[2];
-    document.getElementById("testText4").innerHTML=crosswordGrid[3];
-    document.getElementById("testText5").innerHTML=crosswordGrid[4];
-    document.getElementById("testText6").innerHTML=crosswordGrid[5];
-    document.getElementById("testText7").innerHTML=crosswordGrid[6];
-    document.getElementById("testText8").innerHTML=crosswordGrid[7];
-    document.getElementById("testText9").innerHTML=crosswordGrid[8];
-    document.getElementById("testText10").innerHTML=crosswordGrid[9];
-    document.getElementById("testText11").innerHTML=crosswordGrid[10];
-    document.getElementById("testText12").innerHTML=crosswordGrid[11];
-    document.getElementById("testText13").innerHTML=crosswordGrid[12];
-    //document.getElementById("testText").innerHTML=crosswordGrid[13]; */
-    //document.getElementById("testText15").innerHTML=selectedWords;
-   //testing script
 
     generateClues();
 }
@@ -200,6 +189,7 @@ function generateVisuals() {
         yValue = 145 + yValue;
         yValue = yValue + "px";
         gridLocation = [xValue, yValue];
+        gridLocations[i] = gridLocation;
         //translates the startCoords to the in-ratio gridLocation
 
         imageName = selectedWords[i];
@@ -236,8 +226,63 @@ function generateVisuals() {
 }
 
 function fillGap() {
-    let wordInput = document.getElementById("inbox").value;
-}
+    let nList = [1, 2, 3, 4, 5, 6, 7, 8]
+    let wordValue = document.getElementById("wordEnter").value;
+    let gapValue = document.getElementById("gapEnter").value;
+    let gridLocation = "";
+    let xValue = "";
+    let yValue = "";
+    //declare local variables
+
+    if ((wordValue == "") || (gapValue == "")) {
+        alert("Both input boxes must be filled")
+     } else if (gapValue in nList == false) {
+        alert("Gap input must be between 1 and 7");
+     } else if ((/^[a-zA-Z]+$/.test(wordValue) == false) || (wordValue.length != selectedWords[gapValue-1].length)){
+        alert("You must enter a word that is the same length as the gap")
+     }
+     //input validation
+
+     else {
+        gapValue = gapValue - 1;
+        wordValue = wordValue.toLowerCase();
+        enteredWords[gapValue] = wordValue;
+
+        if ((gapValue==0) || (gapValue==2) || (gapValue==6)) {
+
+            document.getElementById("gapFill"+gapValue).style.letterSpacing="17px";
+            xValue = startCoords[gapValue][0]*35;
+            xValue = 157 + xValue;
+            xValue = xValue + "px";
+
+            yValue = startCoords[gapValue][1]*35;
+            yValue = 115 + yValue;
+            yValue = yValue + "px";
+        }
+        else {
+            document.getElementById("gapFill"+gapValue).style.letterSpacing="1.5px";
+            xValue = startCoords[gapValue][0]*35;
+            xValue = 118 + xValue;
+            xValue = xValue + "px";
+            gridLocation = gridLocations[gapValue];
+            yValue = gridLocation[1];
+        
+        }
+
+        document.getElementById("gapFill"+gapValue).style.left=xValue;
+        document.getElementById("gapFill"+gapValue).style.top=yValue;
+        document.getElementById("gapFill"+gapValue).innerHTML=wordValue;
+        
+
+
+
+
+        }
+    }
+
+
+
+
 
 
 
