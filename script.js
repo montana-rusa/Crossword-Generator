@@ -232,10 +232,18 @@ function generateVisuals() {
         document.getElementById("gapText"+i).style.left=xValueText;
         document.getElementById("gapText"+i).style.display="block";
         //visually numbers each gap
-
-
     }
+}
+
+function fillGap() {
+    let wordInput = document.getElementById("inbox").value;
 }
 
 
 
+
+
+
+
+
+generateCrossword()

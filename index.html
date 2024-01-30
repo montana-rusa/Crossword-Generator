@@ -57,7 +57,15 @@
                 <p id="gapText6">7</p>
             </div>
 
-
+            <div id="gapFills">
+                <p id="gapFill0"></p>
+                <p id="gapFill1"></p>
+                <p id="gapFill2"></p>
+                <p id="gapFill3"></p>
+                <p id="gapFill4"></p>
+                <p id="gapFill5"></p>
+                <p id="gapFill6"></p>
+            </div>
 
             <div id="acrossCluesDiv">
                 <h2 id="acrossTitle">Across</h2>
@@ -79,7 +87,8 @@
             <button id="puzzleGenerateB" onclick="generateCrossword()">Generate crossword</button>
             <button id="finishB">Finish crossword</button>
             <input type="text" placeholder="enter word:" id="wordEnter"/>
-            <button id="wordEnterB">Enter word</button>
+            <input type="text" placeholder="clue(1-7):" id="gapEnter"/>
+            <button id="wordEnterB" onclick="fillGap()">Enter word</button>
         </div>
         <!--This code creates and labels all of the elements on the puzzle page-->
 
