@@ -247,17 +247,17 @@ function fillGap() {
         gapValue = gapValue - 1;
         wordValue = wordValue.toLowerCase();
         enteredWords[gapValue] = wordValue;
+        // records the entered word to a global list 'enteredWords'
 
         if ((gapValue==0) || (gapValue==2) || (gapValue==6)) {
-
             document.getElementById("gapFill"+gapValue).style.letterSpacing="17px";
             xValue = startCoords[gapValue][0]*35;
             xValue = 157 + xValue;
             xValue = xValue + "px";
-
             yValue = startCoords[gapValue][1]*35;
             yValue = 115 + yValue;
             yValue = yValue + "px";
+            //sets the x and y value if the word needs to generate horizonally
         }
         else {
             document.getElementById("gapFill"+gapValue).style.letterSpacing="1.5px";
@@ -266,22 +266,15 @@ function fillGap() {
             xValue = xValue + "px";
             gridLocation = gridLocations[gapValue];
             yValue = gridLocation[1];
-        
+            //sets the x and y value if the word needs to generate vertically
         }
 
         document.getElementById("gapFill"+gapValue).style.left=xValue;
         document.getElementById("gapFill"+gapValue).style.top=yValue;
         document.getElementById("gapFill"+gapValue).innerHTML=wordValue;
-        
-
-
-
-
+        //moves the word to the right place
         }
     }
-
-
-
 
 
 
