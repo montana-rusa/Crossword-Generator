@@ -224,32 +224,62 @@ function generateVisuals() {
         //visually numbers each gap
     }
 }
+function preFillGap(trigger) {
+    let gapValue = "";
+    let wordValue = "";
+    let nList = [1, 2, 3, 4, 5, 6, 7, 8];
+    //declare local variables
 
-function fillGap() {
-    let nList = [1, 2, 3, 4, 5, 6, 7, 8]
-    let wordValue = document.getElementById("wordEnter").value;
-    let gapValue = document.getElementById("gapEnter").value;
+    if (trigger == 1) { //if triggered by the enter word button
+        wordValue = document.getElementById("wordEnter").value;
+        gapValue = document.getElementById("gapEnter").value;
+        //set wordValue and gapValue
+
+        if (gapValue == "") {
+            alert("You must enter a gap value(1-7)")
+         } else if (gapValue in nList == false) {
+            alert("Gap input must be between 1 and 7");
+         } else if (((/^[a-zA-Z]+$/.test(wordValue) == false) && (wordValue != "")) || (wordValue.length > selectedWords[gapValue-1].length)){
+            alert("word must contain only letters, and not exceed the length of the gap")
+         } //input validation
+         else {
+            gapValue = gapValue - 1;
+            fillGap(wordValue, gapValue); } 
+
+    } else { //if triggered by the word hint button
+
+        let allDone = true;
+        for (let i=0; i < 7; i++) {
+            if (enteredWords[i] != selectedWords[i]) {
+                allDone = false; } }
+
+        if (allDone == true) {
+            alert("The crossword is already finished!"); 
+        } else {
+            allDone = false;
+            while (allDone == false) {
+                gapValue =  Math.floor(Math.random()*7);
+                if (selectedWords[gapValue] == enteredWords[gapValue]) {
+                } else {
+                    allDone = true;
+                    wordValue = selectedWords[gapValue];
+                    fillGap(wordValue, gapValue); } }
+        }
+    }
+  }
+
+
+function fillGap(wordValue, gapValue) {
     let gridLocation = "";
     let xValue = "";
     let yValue = "";
     //declare local variables
 
-    if (gapValue == "") {
-        alert("You must enter a gap value(1-7)")
-     } else if (gapValue in nList == false) {
-        alert("Gap input must be between 1 and 7");
-     } else if (((/^[a-zA-Z]+$/.test(wordValue) == false) && (wordValue != "")) || (wordValue.length > selectedWords[gapValue-1].length)){
-        alert("word must contain only letters, and not exceed the length of the gap")
-     }
-     //input validation
+    wordValue = wordValue.toLowerCase();
+    enteredWords[gapValue] = wordValue;
+    // records the entered word to a global list 'enteredWords'
 
-     else {
-        gapValue = gapValue - 1;
-        wordValue = wordValue.toLowerCase();
-        enteredWords[gapValue] = wordValue;
-        // records the entered word to a global list 'enteredWords'
-
-        if ((gapValue==0) || (gapValue==2) || (gapValue==6)) {
+    if ((gapValue==0) || (gapValue==2) || (gapValue==6)) {
             document.getElementById("gapFill"+gapValue).style.letterSpacing="17px";
             xValue = startCoords[gapValue][0]*35;
             xValue = 157 + xValue;
@@ -259,7 +289,7 @@ function fillGap() {
             yValue = yValue + "px";
             //sets the x and y value if the word needs to generate horizonally
         }
-        else {
+    else {
             document.getElementById("gapFill"+gapValue).style.letterSpacing="1.5px";
             xValue = startCoords[gapValue][0]*35;
             xValue = 118 + xValue;
@@ -269,11 +299,11 @@ function fillGap() {
             //sets the x and y value if the word needs to generate vertically
         }
 
-        document.getElementById("gapFill"+gapValue).style.left=xValue;
-        document.getElementById("gapFill"+gapValue).style.top=yValue;
-        document.getElementById("gapFill"+gapValue).innerHTML=wordValue;
+    document.getElementById("gapFill"+gapValue).style.left=xValue;
+    document.getElementById("gapFill"+gapValue).style.top=yValue;
+    document.getElementById("gapFill"+gapValue).innerHTML=wordValue;
         //moves the word to the right place
-        }
+        
     }
 
 

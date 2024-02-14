@@ -67,12 +67,12 @@
             </div>
 
             <button id="lClueB">Letter clue</button>
-            <button id="wClueB">Word clue</button>
+            <button id="wClueB" onclick="preFillGap(0)">Word clue</button>
             <button id="puzzleGenerateB" onclick="generateCrossword()">Generate crossword</button>
             <button id="finishB">Finish crossword</button>
             <input type="text" placeholder="enter word:" id="wordEnter"/>
             <input type="text" placeholder="clue(1-7):" id="gapEnter"/>
-            <button id="wordEnterB" onclick="fillGap()">Enter word</button>
+            <button id="wordEnterB" onclick="preFillGap(1)">Enter word</button>
         </div>
         <!--This code creates and labels all of the elements on the puzzle page-->
 
