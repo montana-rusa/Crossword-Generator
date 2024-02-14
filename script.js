@@ -62,7 +62,7 @@ function generateCrossword() {
 
     for (let i=0; i < 7; i++) {
         document.getElementById("gapFill"+i).innerHTML="";
-    }
+    } enteredWords = [".",".",".",".",".",".","."];
     //resets all of the gapFill elements
 
     document.getElementById("puzzleGenerateB").disabled = true;
@@ -234,12 +234,12 @@ function fillGap() {
     let yValue = "";
     //declare local variables
 
-    if ((wordValue == "") || (gapValue == "")) {
-        alert("Both input boxes must be filled")
+    if (gapValue == "") {
+        alert("You must enter a gap value(1-7)")
      } else if (gapValue in nList == false) {
         alert("Gap input must be between 1 and 7");
-     } else if ((/^[a-zA-Z]+$/.test(wordValue) == false) || (wordValue.length != selectedWords[gapValue-1].length)){
-        alert("You must enter a word that is the same length as the gap")
+     } else if (((/^[a-zA-Z]+$/.test(wordValue) == false) && (wordValue != "")) || (wordValue.length > selectedWords[gapValue-1].length)){
+        alert("word must contain only letters, and not exceed the length of the gap")
      }
      //input validation
 
@@ -285,3 +285,4 @@ function fillGap() {
 
 
 generateCrossword()
+alert(selectedWords)
