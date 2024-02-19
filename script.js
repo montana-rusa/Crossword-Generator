@@ -1,5 +1,5 @@
 var difficulty = "normal";
-var wordList = ['audience', 'amateur', 'accused', 'anomaly', 'absent', 'asylum', 'apathy', 'adept', 'anthem', 'beverage', 'blanket', 'behalf', 'blaze', 'coronary', 'candid', 'conduct', 'consent', 'census', 'drone', 'distress', 'dignity', 'dessert', 'elevator', 'eruption', 'epilogue', 'erosion', 'eclipse', 'eminent', 'erotic', 'equine', 'fugitive', 'fantasy', 'festive', 'fiber', 'genocide', 'glory', 'gallows', 'grudge', 'hysteria', 'hologram', 'hormone', 'hostage', 'inferior', 'indulge', 'incest', 'impair', 'idiom', 'jugular', 'justice', 'jungle', 'kilobyte', 'kneecap', 'kidney', 'karma', 'leisure', 'lunatic', 'launch', 'lesion', 'montage', 'modest', 'manor', 'magma', 'negative', 'neglect', 'nebula', 'ninja', 'outcast', 'ornate', 'organ', 'optimum', 'pregnant', 'preacher', 'plasma', 'quartet', 'quirk', 'quaint', 'release', 'reunion', 'riddle', 'retail', 'scarce', 'surgery', 'secular', 'surplus', 'shallow', 'scrap', 'throttle', 'tragic', 'triumph', 'thermal', 'thunder', 'ultimate', 'umpire', 'union', 'venture', 'valiant', 'vocal', 'welfare', 'whisper', 'wretch', 'yarrow', 'yacht', 'yeast', 'zealous', 'zodiac'];
+var wordList = ['audience', 'amateur', 'accused', 'anomaly', 'absent', 'asylum', 'apathy', 'adept', 'anthem', 'beverage', 'blanket', 'backbone', 'blaze', 'coronary', 'candid', 'conduct', 'consent', 'census', 'drone', 'distress', 'dignity', 'dessert', 'elevator', 'eruption', 'epilogue', 'erosion', 'eclipse', 'eminent', 'erotic', 'equine', 'fugitive', 'fantasy', 'festive', 'fiber', 'genocide', 'glory', 'gallows', 'grudge', 'hysteria', 'hologram', 'hormone', 'hostage', 'inferior', 'indulge', 'incest', 'impair', 'idiom', 'jugular', 'justice', 'jungle', 'kilobyte', 'kneecap', 'kidney', 'karma', 'leisure', 'lunatic', 'launch', 'lesion', 'montage', 'modest', 'manor', 'magma', 'negative', 'neglect', 'nebula', 'ninja', 'outcast', 'ornate', 'organ', 'optimum', 'pregnant', 'preacher', 'plasma', 'quartet', 'quirk', 'quaint', 'release', 'reunion', 'riddle', 'retail', 'scarce', 'surgery', 'secular', 'surplus', 'shallow', 'scrap', 'throttle', 'tragic', 'triumph', 'thermal', 'thunder', 'ultimate', 'umpire', 'union', 'venture', 'valiant', 'vocal', 'welfare', 'whisper', 'wretch', 'yarrow', 'yacht', 'yeast', 'zealous', 'zodiac'];
 var startCoords = [];
 var endCoords = [];
 var selectedWords = [];
@@ -44,6 +44,10 @@ function changeDifficulty(newDifficulty) {
     }
 } 
 //function changeDifficulty changes value of variables 'difficulty' and 'wordList when a new difficulty is clicked in settings
+
+function giveHelp() {
+    alert("To enter a word into a gap, type the word into the 'enter word' box, and the number of the gap into the 'clue(1-7)' box. Then press 'enter word'. \n \n To empty a gap, leave the word input blank, enter the number of the gap, and press 'enter word'. /n Your input will only be accepted if the word input is shorter than the length of the gap, and if a number between 1 and 7 has been entered into the gap input box. \n \n If you need a hint because you are stuck, press the 'word hint' button. It will fill in a random word for you. Using this feature will disqualify you from the leaderboard. \n \n Once you have completed the crossword, press the 'finish crossword button to see your time. \n \n You can change the difficulty in the settings. \n \n enjoy!")
+}
 
 function generateCrossword() {
     let word = "";
@@ -247,14 +251,14 @@ function preFillGap(trigger) {
             fillGap(wordValue, gapValue); } 
 
     } else { //if triggered by the word hint button
-
         let allDone = true;
         for (let i=0; i < 7; i++) {
             if (enteredWords[i] != selectedWords[i]) {
                 allDone = false; } }
-
         if (allDone == true) {
             alert("The crossword is already finished!"); 
+            //checks the crossword hasn't been finished already
+
         } else {
             allDone = false;
             while (allDone == false) {
@@ -263,7 +267,7 @@ function preFillGap(trigger) {
                 } else {
                     allDone = true;
                     wordValue = selectedWords[gapValue];
-                    fillGap(wordValue, gapValue); } }
+                    fillGap(wordValue, gapValue); } } 
         }
     }
   }
@@ -306,13 +310,6 @@ function fillGap(wordValue, gapValue) {
         
     }
 
-
-
-
-
-
-
-
-
 generateCrossword()
 alert(selectedWords)
+
