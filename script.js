@@ -9,6 +9,7 @@ var enteredWords = [".",".",".",".",".",".","."];
 var gridLocations = []
 var hintUsed = false;
 var theTime = 0;
+var myInterval = setInterval(update, 1000);
 const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 //global variables being declared
 
@@ -66,6 +67,8 @@ function generateCrossword() {
     endCoords = [];
     selectedWords = ["........"];
     hintUsed = false;
+    theTime = -1;
+    myInterval = setInterval(update, 1000);
     // reset the global variables 
 
     for (let i=0; i < 7; i++) {
@@ -324,6 +327,7 @@ function finishCheck() {
             } // checks if the crossword is finished or not
 
         if (allDone == true) {
+            clearInterval(myInterval);
             if (hintUsed == false) {
                 doneText = "Congratulations, your solution was correct! You took " + theTime + " seconds. Please enter a username if you want to be on the leaderboard!";
                 document.getElementById("completeText").innerHTML=doneText;
@@ -348,6 +352,11 @@ function startAgain() {
     generateCrossword();
     document.getElementById("puzzlePage").style.display="block";
 }
+
+function update() {
+    if (theTime < 1000) {
+    theTime += 1; }
+  }
 
 generateCrossword()
 
