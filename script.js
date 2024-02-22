@@ -7,6 +7,8 @@ var crosswordGrid = [[".",".",".",".",".",".",".",".",".",".",".",".",".",".",".
 var clues = [];
 var enteredWords = [".",".",".",".",".",".","."];
 var gridLocations = []
+var hintUsed = false;
+var theTime = 0;
 const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 //global variables being declared
 
@@ -46,8 +48,9 @@ function changeDifficulty(newDifficulty) {
 //function changeDifficulty changes value of variables 'difficulty' and 'wordList when a new difficulty is clicked in settings
 
 function giveHelp() {
-    alert("To enter a word into a gap, type the word into the 'enter word' box, and the number of the gap into the 'clue(1-7)' box. Then press 'enter word'. \n \n To empty a gap, leave the word input blank, enter the number of the gap, and press 'enter word'. /n Your input will only be accepted if the word input is shorter than the length of the gap, and if a number between 1 and 7 has been entered into the gap input box. \n \n If you need a hint because you are stuck, press the 'word hint' button. It will fill in a random word for you. Using this feature will disqualify you from the leaderboard. \n \n Once you have completed the crossword, press the 'finish crossword button to see your time. \n \n You can change the difficulty in the settings. \n \n enjoy!")
-}
+    alert("To enter a word into a gap, type the word into the 'enter word' box, and the number of the gap into the 'clue(1-7)' box. Then press 'enter word'. \n \n To empty a gap, leave the word input blank, enter the number of the gap, and press 'enter word'. \n \n Your input will only be accepted if the word input is shorter than the length of the gap, and if a number between 1 and 7 has been entered into the gap input box. \n \n If you need a hint because you are stuck, press the 'word hint' button. It will fill in a random word for you. Using this feature will disqualify you from the leaderboard. \n \n Once you have completed the crossword, press the 'finish crossword button to see your time. \n \n You can change the difficulty in the settings. \n \n Enjoy!")
+    alert(selectedWords)
+} //this function tells the user how to use the program if the help button is pressed
 
 function generateCrossword() {
     let word = "";
@@ -62,6 +65,7 @@ function generateCrossword() {
     startCoords = [];
     endCoords = [];
     selectedWords = ["........"];
+    hintUsed = false;
     // reset the global variables 
 
     for (let i=0; i < 7; i++) {
@@ -261,6 +265,7 @@ function preFillGap(trigger) {
 
         } else {
             allDone = false;
+            hintUsed = true;
             while (allDone == false) {
                 gapValue =  Math.floor(Math.random()*7);
                 if (selectedWords[gapValue] == enteredWords[gapValue]) {
@@ -271,7 +276,6 @@ function preFillGap(trigger) {
         }
     }
   }
-
 
 function fillGap(wordValue, gapValue) {
     let gridLocation = "";
@@ -306,10 +310,44 @@ function fillGap(wordValue, gapValue) {
     document.getElementById("gapFill"+gapValue).style.left=xValue;
     document.getElementById("gapFill"+gapValue).style.top=yValue;
     document.getElementById("gapFill"+gapValue).innerHTML=wordValue;
-        //moves the word to the right place
-        
+        //moves the word to the right place  
     }
 
+function finishCheck() {
+ let doneText = "";
+ let allDone = true;
+ //declare local variables
+
+        for (let i=0; i < 7; i++) {
+            if (enteredWords[i] != selectedWords[i]) {
+                allDone = false; } 
+            } // checks if the crossword is finished or not
+
+        if (allDone == true) {
+            if (hintUsed == false) {
+                doneText = "Congratulations, your solution was correct! You took " + theTime + " seconds. Please enter a username if you want to be on the leaderboard!";
+                document.getElementById("completeText").innerHTML=doneText;
+                document.getElementById("completionStuff").style.display="block";
+                document.getElementById("nameEnter").style.display="block";
+                //what happens if the crossword has been completed without hints
+
+            } else {
+                doneText = "Congratulations, your solution was correct! You took " + theTime + " seconds. \n However, you used hints.";
+                document.getElementById("completeText").innerHTML=doneText;
+                document.getElementById("completionStuff").style.display="block";
+                document.getElementById("nameEnter").style.display="none";
+                 //what happens if the crossword has been completed with hints
+            }
+        } else {
+            alert("you have one or more incorrect answers!")
+        } // what happens if the crossword has not been completed
+}
+
+function startAgain() {
+    document.getElementById("completionStuff").style.display="none";
+    generateCrossword();
+    document.getElementById("puzzlePage").style.display="block";
+}
+
 generateCrossword()
-alert(selectedWords)
 

@@ -14,12 +14,11 @@
             <li><button id="sB" onclick="settingsPress()">Settings</button></li>
             <li><button id="lB" onclick="boardPress()">Leaderboard</button></li>
         </ul>
+        <!--This code creates and labels the three menu buttons-->
   
         <div id="puzzlePage">
-            
          <div id="crosswordDiv">
             </div>
-
             <div id="gaps">
                 <img src="images/h5.png" id="gap0">
                 <img src="images/h5.png" id="gap1">
@@ -40,6 +39,7 @@
                 <p id="gapText5">6</p>
                 <p id="gapText6">7</p>
             </div>
+             <!--This code creates elements to number each gap-->
 
             <div id="gapFills">
                 <p id="gapFill0"></p>
@@ -50,6 +50,7 @@
                 <p id="gapFill5" class="vertical-writing"></p>
                 <p id="gapFill6" ></p>
             </div>
+             <!--This code creates and labels the gaps for the words-->
 
             <div id="acrossCluesDiv">
                 <h2 id="acrossTitle">Across</h2>
@@ -69,7 +70,7 @@
             <button id="helpB" onclick="giveHelp()">How to use?</button>
             <button id="wClueB" onclick="preFillGap(0)">Word hint</button>
             <button id="puzzleGenerateB" onclick="generateCrossword()">Generate crossword</button>
-            <button id="finishB">Finish crossword</button>
+            <button id="finishB" onclick="finishCheck()">Finish crossword</button>
             <input type="text" placeholder="enter word:" id="wordEnter"/>
             <input type="text" placeholder="clue(1-7):" id="gapEnter"/>
             <button id="wordEnterB" onclick="preFillGap(1)">Enter word</button>
@@ -94,8 +95,16 @@
             <div id="hardBox">Hard</div>
         </div>
         <!--This code creates and labels all of the elements on the leaderboard page-->
-
     </div>
+
+    <div id="completionStuff">
+            <input type="text" placeholder="enter username:" id="nameEnter"/>
+            <button id="nameEnterB" onclick="startAgain()">Start again</button>
+            <h3 id="completeText"></h3>
+    </div>
+     <!--This code creates and labels all of the elements shown to the user when they complete the crossword-->
+
+
     <script src="script.js"></script>
 </body>
 </html>

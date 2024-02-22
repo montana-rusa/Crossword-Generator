@@ -49,6 +49,8 @@ button:hover {
     display: none;
 } #leaderPage {
     display: none;
+} #completionStuff {
+    display: none;
 }
 
 #crosswordDiv {
@@ -129,6 +131,17 @@ button:hover {
     border: 5px solid black;
 }
 
+#nameEnter {
+    position: fixed;
+    padding-left: 10px;
+    top: 500px;
+    left: 620px;
+    width: 190px;
+    height: 58px;
+    font: 24px Arial;
+    border: 5px solid black;
+}
+
 #gapEnter {
     position: fixed;
     padding-left: 10px;
@@ -144,6 +157,16 @@ button:hover {
     position: fixed;
     top: 630px;
     left: 1155px;
+    width: 250px;
+    height: 70px;
+    font: 24px Arial;
+    border: 5px solid black;
+}
+
+#nameEnterB {
+    position: fixed;
+    top: 600px;
+    left: 600px;
     width: 250px;
     height: 70px;
     font: 24px Arial;
@@ -265,4 +288,22 @@ h1 {
 .vertical-writing {
     writing-mode: vertical-rl;
     text-orientation: upright;
+}
+
+#completionStuff {
+    position: fixed;
+    padding: 0px;
+    background-color: white;
+    width: 1350px;
+    height: 675px;
+    left: 65px;
+    top: 35px;
+}
+
+#completeText {
+    font: 30px Arial;
+    width: 500px;
+    position: fixed;
+    left: 550px;
+    top: 200px;
 }
