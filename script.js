@@ -266,6 +266,7 @@ function generateVisuals() {
         //visually numbers each gap
     }
 }
+
 function preFillGap(trigger) {
     let gapValue = "";
     let wordValue = "";
@@ -352,7 +353,7 @@ function addResult(theTime) {
     let secondPlace = "";
     let thirdPlace = "";
     //declare locals
-    if (difficulty = "easy") {
+    if (difficulty == "easy") {
         firstPlace = easyRanking.getFirstPlace();
         secondPlace = easyRanking.getSecondPlace();
         thirdPlace = easyRanking.getSecondPlace();
@@ -366,7 +367,7 @@ function addResult(theTime) {
         thirdPlace = hardRanking.getSecondPlace();
     }
     if ((theTime < firstPlace) || (firstPlace == "")) {
-        if (difficulty = "easy") {
+        if (difficulty == "easy") {
             easyRanking.setFirstPlace(theTime);
             document.getElementById("e1").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
         } else if (difficulty == "normal") {
@@ -377,7 +378,7 @@ function addResult(theTime) {
             document.getElementById("h1").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
         }
         } else if ((theTime < secondPlace) || (secondPlace == "")) {
-        if (difficulty = "easy") {
+        if (difficulty == "easy") {
                 easyRanking.setSecondPlace(theTime);
                 document.getElementById("e2").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
         } else if (difficulty == "normal") {
@@ -388,7 +389,7 @@ function addResult(theTime) {
                 document.getElementById("h2").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
         } 
         } else if ((theTime < thirdPlace) || (thirdPlace == "")) {
-        if (difficulty = "easy") {
+        if (difficulty == "easy") {
                     easyRanking.setThirdPlace(theTime);
                     document.getElementById("e3").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
         } else if (difficulty == "normal") {
@@ -404,7 +405,6 @@ function addResult(theTime) {
 function finishCheck() {
  let doneText = "";
  let allDone = true;
- let resultText = "";
  //declare local variables
 
         for (let i=0; i < 7; i++) {
@@ -419,7 +419,6 @@ function finishCheck() {
                 document.getElementById("completeText").innerHTML=doneText;
                 document.getElementById("completionStuff").style.display="block";
                 document.getElementById("nameEnter").style.display="block";
-                if (document.getElementById("wordEnter").value != "") {addResult(theTime);}
                 //what happens if the crossword has been completed without hints
 
             } else {
@@ -435,7 +434,10 @@ function finishCheck() {
 }
 
 function startAgain() {
+    let nameValue = document.getElementById("nameEnter").value;
+
     document.getElementById("completionStuff").style.display="none";
+    if ((nameValue != "") && (nameValue.length < 13)) {addResult(theTime);}
     generateCrossword();
     document.getElementById("puzzlePage").style.display="block";
 }
