@@ -9,7 +9,7 @@ var enteredWords = [".",".",".",".",".",".","."];
 var gridLocations = []
 var hintUsed = false;
 var theTime = 0;
-var myInterval = setInterval(update, 1000);
+var myInterval = "";
 const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 //global variables being declared
 
@@ -67,7 +67,7 @@ function generateCrossword() {
     endCoords = [];
     selectedWords = ["........"];
     hintUsed = false;
-    theTime = -1;
+    theTime = 0;
     myInterval = setInterval(update, 1000);
     // reset the global variables 
 
