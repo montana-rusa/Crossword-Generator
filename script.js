@@ -36,6 +36,37 @@ function menuPress(b1, n1, n2, o1, on1, on2) {
 } 
 //this function lets the user change between the puzzle, setting and leaderboard page, depending on its parameters.
 
+class Ranking{
+    constructor(firstPlace, secondPlace, thirdPlace) {
+      this.firstPlace = firstPlace;
+      this.secondPlace = secondPlace;
+      this.thirdPlace = thirdPlace;
+    }
+    setFirstPlace(firstPlace) {
+        this.firstPlace = firstPlace;
+    }
+    setSecondPlace(secondPlace) {
+        this.secondPlace = secondPlace;
+    }
+    setThirdPlace(thirdPlace) {
+        this.thirdPlace = thirdPlace;
+    }
+    getFirstPlace() {
+        return this.firstPlace;
+    }
+    getSecondPlace() {
+        return this.secondPlace;
+    }
+    getThirdPlace() {
+        return this.thirdPlace;
+    }
+}
+var easyRanking = new Ranking("","","");
+var normalRanking = new Ranking("","","");
+var hardRanking = new Ranking("","","");
+//declaring a class for OOP and instantiating it for three objects
+
+
 function changeDifficulty(newDifficulty) {
     difficulty = newDifficulty;
     if (difficulty == "hard") {
@@ -316,9 +347,64 @@ function fillGap(wordValue, gapValue) {
         //moves the word to the right place  
     }
 
+function addResult(theTime) {
+    let firstPlace = "";
+    let secondPlace = "";
+    let thirdPlace = "";
+    //declare locals
+    if (difficulty = "easy") {
+        firstPlace = easyRanking.getFirstPlace();
+        secondPlace = easyRanking.getSecondPlace();
+        thirdPlace = easyRanking.getSecondPlace();
+    } else if (difficulty == "normal") {
+        firstPlace = normalRanking.getFirstPlace();
+        secondPlace = normalRanking.getSecondPlace();
+        thirdPlace = normalRanking.getSecondPlace();
+    } else { //if difficulty is hard
+        firstPlace = hardRanking.getFirstPlace();
+        secondPlace = hardRanking.getSecondPlace();
+        thirdPlace = hardRanking.getSecondPlace();
+    }
+    if ((theTime < firstPlace) || (firstPlace == "")) {
+        if (difficulty = "easy") {
+            easyRanking.setFirstPlace(theTime);
+            document.getElementById("e1").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
+        } else if (difficulty == "normal") {
+            normalRanking.setFirstPlace(theTime);
+            document.getElementById("n1").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
+        } else { //if difficulty is hard
+            hardRanking.setFirstPlace(theTime);
+            document.getElementById("h1").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
+        }
+        } else if ((theTime < secondPlace) || (secondPlace == "")) {
+        if (difficulty = "easy") {
+                easyRanking.setSecondPlace(theTime);
+                document.getElementById("e2").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
+        } else if (difficulty == "normal") {
+                normalRanking.setsecondPlace(theTime);
+                document.getElementById("n2").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
+        } else { //if difficulty is hard
+                hardRanking.setSecondPlace(theTime);
+                document.getElementById("h2").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
+        } 
+        } else if ((theTime < thirdPlace) || (thirdPlace == "")) {
+        if (difficulty = "easy") {
+                    easyRanking.setThirdPlace(theTime);
+                    document.getElementById("e3").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
+        } else if (difficulty == "normal") {
+                    normalRanking.setThirdPlace(theTime);
+                    document.getElementById("n3").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
+        } else { //if difficulty is hard
+                    hardRanking.setThirdPlace(theTime);
+                    document.getElementById("h3").innerHTML = "1st: " + document.getElementById("nameEnter").value + ": " + theTime + "s";
+        }   
+}
+}
+
 function finishCheck() {
  let doneText = "";
  let allDone = true;
+ let resultText = "";
  //declare local variables
 
         for (let i=0; i < 7; i++) {
@@ -333,6 +419,7 @@ function finishCheck() {
                 document.getElementById("completeText").innerHTML=doneText;
                 document.getElementById("completionStuff").style.display="block";
                 document.getElementById("nameEnter").style.display="block";
+                if (document.getElementById("wordEnter").value != "") {addResult(theTime);}
                 //what happens if the crossword has been completed without hints
 
             } else {

@@ -307,3 +307,37 @@ h1 {
     left: 550px;
     top: 200px;
 }
+
+#leaderPage p {
+    position: fixed;
+    font: 25px Arial;
+}
+
+#e1 {
+    left: 125px;
+    top: 200px;
+} #e2 {
+    left: 125px;
+    top: 400px;
+} #e3 {
+    left: 125px;
+    top: 600px;
+} #n1 {
+    left: 600px;
+    top: 200px;
+} #n2 {
+    left: 600px;
+    top: 400px;
+} #n3 {
+    left: 600px;
+    top: 600px;
+} #h1 {
+    left: 1050px;
+    top: 200px;
+} #h2 {
+    left: 1050px;
+    top: 400px;
+} #h3 {
+    left: 1050px;
+    top: 600px;
+}
