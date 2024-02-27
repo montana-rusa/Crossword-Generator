@@ -9,6 +9,7 @@ var enteredWords = [".",".",".",".",".",".","."];
 var gridLocations = []
 var hintUsed = false;
 var theTime = 0;
+var thisTime = 0;
 var myInterval = "";
 const url = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 //global variables being declared
@@ -99,7 +100,6 @@ function generateCrossword() {
     selectedWords = ["........"];
     hintUsed = false;
     theTime = 0;
-    myInterval = setInterval(update, 1000);
     // reset the global variables 
 
     for (let i=0; i < 7; i++) {
@@ -413,16 +413,16 @@ function finishCheck() {
             } // checks if the crossword is finished or not
 
         if (allDone == true) {
-            clearInterval(myInterval);
+            thisTime = theTime;
             if (hintUsed == false) {
-                doneText = "Congratulations, your solution was correct! You took " + theTime + " seconds. Please enter a username if you want to be on the leaderboard!";
+                doneText = "Congratulations, your solution was correct! You took " + thisTime + " seconds. Please enter a username if you want to be on the leaderboard!";
                 document.getElementById("completeText").innerHTML=doneText;
                 document.getElementById("completionStuff").style.display="block";
                 document.getElementById("nameEnter").style.display="block";
                 //what happens if the crossword has been completed without hints
 
             } else {
-                doneText = "Congratulations, your solution was correct! You took " + theTime + " seconds. \n However, you used hints.";
+                doneText = "Congratulations, your solution was correct! You took " + thisTime + " seconds. \n However, you used hints.";
                 document.getElementById("completeText").innerHTML=doneText;
                 document.getElementById("completionStuff").style.display="block";
                 document.getElementById("nameEnter").style.display="none";
@@ -437,15 +437,16 @@ function startAgain() {
     let nameValue = document.getElementById("nameEnter").value;
 
     document.getElementById("completionStuff").style.display="none";
-    if ((nameValue != "") && (nameValue.length < 13)) {addResult(theTime);}
+    if ((nameValue != "") && (nameValue.length < 13)) {addResult(thisTime);}
     generateCrossword();
     document.getElementById("puzzlePage").style.display="block";
 }
 
 function update() {
-    if (theTime < 1000) {
-    theTime += 1; }
+    if (theTime < 999) {
+    theTime += 1; document.getElementById("showTime").innerHTML=theTime;}
   }
 
+myInterval = setInterval(update, 1000);
 generateCrossword()
 

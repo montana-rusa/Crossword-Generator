@@ -341,3 +341,10 @@ h1 {
     left: 1050px;
     top: 600px;
 }
+
+#showTime {
+    position: fixed;
+    font: 30px Arial ;
+    left: 125px;
+    top: 600px;
+}
