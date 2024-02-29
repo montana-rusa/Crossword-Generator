@@ -437,7 +437,7 @@ function startAgain() {
     let nameValue = document.getElementById("nameEnter").value;
 
     document.getElementById("completionStuff").style.display="none";
-    if ((nameValue != "") && (nameValue.length < 13)) {addResult(thisTime);}
+    if ((nameValue != "") && (nameValue.length < 11) && (nameValue.length > 1)) {addResult(thisTime);}
     generateCrossword();
     document.getElementById("puzzlePage").style.display="block";
 }
