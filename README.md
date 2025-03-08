@@ -1,1 +1,1 @@
-A-level OCR Computer Science Project
+My A-level OCR Computer Science Project: a web application that generates random and fully-solveable crosswords, generating clues using FreeDictionaryAPI, and providing the user with different difficulty levels, hints, and a timer to track how fast they can solve each puzzle.
